@@ -1,29 +1,29 @@
 import express from "express";
-// import dotenv from "dotenv";
-// import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
+import { MongoClient } from "mongodb";
 // import { ObjectId } from "mongodb";
 // import cors from "cors";  
 
 
-// dotenv.config();
+dotenv.config();
 
 const app = express();
-const PORT = 9000;
-// const PORT = process.env.PORT;
+
+const PORT = process.env.PORT;
 
 // app.use(cors());
 // app.use(express.json());
 
 // const MONGO_URL = "mongodb://localhost";
-// // const MONGO_URL = process.env.MONGO_URL;
+const MONGO_URL = process.env.MONGO_URL;
 
-// async function createConnection(){
-//     const client =  new MongoClient(MONGO_URL); 
-//     await client.connect();  
-//     console.log("Mongodb Connected");
-//     return client;
-// }
-// const client = await createConnection();
+async function createConnection(){
+    const client =  new MongoClient(MONGO_URL); 
+    await client.connect();  
+    console.log("Mongodb Connected");
+    return client;
+}
+const client = await createConnection();
 
 
 app.get("/",(request,response)=>{
