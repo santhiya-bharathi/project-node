@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { MongoClient } from "mongodb";
 import { ObjectId } from "mongodb";
 import cors from "cors";  
+import bcrypt from "bcrypt";
 
 
 dotenv.config();
