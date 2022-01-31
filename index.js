@@ -48,6 +48,22 @@ app.get("/bloglist/:id", async (request,response)=>{
     blogresult? response.send(blogresult) : response.status(404).send({message:"no matching movie found"});
 });
 
+
+app.get("/links", async (request,response)=>{
+    const link = await client 
+    .db("b28wd")
+    .collection("link")
+    .find({})
+    .toArray();
+    response.send(link);
+});
+
+app.post("/links", async (request,response)=>{
+    const data = request.body;
+    const result = await client.db("b28wd").collection("link").insertMany(data);
+    response.send(result);
+    });
+
 app.post("/bloglist", async (request,response)=>{
     const data = request.body;
     const result = await client.db("b28wd").collection("blog").insertOne(data);
